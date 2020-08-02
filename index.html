@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+  
+    <title>click-clack</title>
+  
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.56.0/codemirror.min.js" integrity="sha512-H5RyE1jRbGn8d0dsSstZi0SSs23X6Hkkf5hLneEIFyCfP/cBwJ/jFJESBuFBiUyzbGZGa06tnrvw1SboRKdwcA==" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.56.0/codemirror.min.css" integrity="sha512-/BlxZbYLtYGExexketXsTi47eHp+r2kTeq2OHecQPZlfbc7WFXVrwbVW9HOYjI6c9Ti+P60ASmVLxittZ0EBGw==" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.56.0/mode/javascript/javascript.min.js" integrity="sha512-9miXlEjnHTF+nVGdc2IGOLGTFW2wWkWbd1/7Ltlre+dM53ZSCUQ/PNN+jtsmYqr3ndiD5RW6XQJUm/Hz8JvyOQ==" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <div id="content">
+      <header>
+        some test header text
+      </header>
+      <main style="background-color: #999999;">
+        <section class="left" style="background-color: #a3a3a3;">
+          <div id="typing-area" style="background-color: #BBBBBB;">
+            <label>
+              Type here
+              <textarea>text area</textarea>
+            </label>
+          </div>
+          <div id="replay-area" style="background-color: #757575;">
+            <label>
+              Replay typing here
+              <textarea id="replay-input" readonly="true"></textarea>
+            </label>
+          </div>
+        </section>
+        <section class="right" style="background-color: #DDDDDD;">
+          <label>
+            Commands
+            <textarea id="output"></textarea>
+          </label>
+        </section>
+      </main>
+      <footer>
+        footer content
+      </footer>
+    </div>
+    <script>
+      CodeMirror.fromTextArea(document.getElementById('output'), {
+        mode: 'json',
+        readOnly: true,
+        lineNumbers: true,
+        lineWrapping: true,
+      });
+    </script>
+  </body>
+</html>
