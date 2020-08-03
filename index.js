@@ -1,14 +1,16 @@
-const ClickClackReceiver = (el) => {
+const ClickClackReceiver = (el, callback) => {
   const eventHistory = [];
   let startTime = null;
 
-  el.addEventListener('input', recordEvent);
+  el.addEventListener('input', (evt) => recordEvent(evt, callback));
 
   function recordEvent(evt, callback) {
     const { data, inputType } = evt;
 
     eventHistory.push(Object.assign({ data, inputType }, { timestamp: getTimestamp() }));
-    callback(eventHistory);
+    if (typeof callback == 'function') {
+      callback(eventHistory);
+    }
   }
 
   function getTimestamp() {
