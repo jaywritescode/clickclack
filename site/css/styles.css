@@ -24,7 +24,7 @@
   padding: 5px;
 }
 
-label > textarea {
+.text-holder {
   width: 100%;
   margin: 0.5rem 0.5rem 0.5rem 0;
   padding: 10px 12px;
