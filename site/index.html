@@ -60,6 +60,16 @@
       ClickClackReceiver(inputEl, (history) => {
         codemirror.setValue(JSON.stringify(history, null, '  '));
       });
+
+      document.querySelector('#replay-area button').addEventListener('click', () => {
+        const parent = document.querySelector('#replay-area .text-holder');
+        const events = JSON.parse(codemirror.getValue());
+
+        while (parent.firstChild) {
+          parent.removeChild(parent.firstChild);
+        }
+        replay(parent, events);
+      });
     </script>
   </body>
 </html>
