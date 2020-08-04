@@ -25,7 +25,7 @@ const ClickClackReceiver = (el, callback) => {
 
 const InputTypes = {
   INSERT: 'insertText',
-  DELETE: 'deleteContentBackwards',
+  DELETE: 'deleteContentBackward',
 };
 
 const replay = (parent, events) => {
@@ -42,8 +42,8 @@ const replay = (parent, events) => {
     parent.textContent += text;
   }
 
-  function chopText(n = 1) {
-    parent.textContent = parent.textContent.slice(0, -n);
+  function chopText() {
+    parent.textContent = parent.textContent.slice(0, -1);
   }
 
   function applyEvent({ data, inputType }) {
@@ -51,7 +51,7 @@ const replay = (parent, events) => {
   }
 
   (function doReplay(_events) {
-    const [current, next, ...rest] = events;
+    const [current, next, ...rest] = _events;
     if (!current) {
       return;
     }
