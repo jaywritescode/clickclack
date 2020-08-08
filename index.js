@@ -28,10 +28,18 @@ const InputTypes = {
   DELETE: 'deleteContentBackward',
 };
 
+/**
+ * 
+ * @param {Node} parent - the node we're quote-unquote typing in 
+ * @param {Object[]} events - a list of clickclack events 
+ */
 const replay = (parent, events) => {
   if (!events.length) {
     return;
   }
+
+  const currentNode = document.createTextNode('');
+  parent.appendChild(currentNode);
 
   const actions = {
     [InputTypes.INSERT]: appendText,
@@ -39,11 +47,11 @@ const replay = (parent, events) => {
   };
 
   function appendText(text) {
-    parent.textContent += text;
+    currentNode.textContent += text;
   }
 
   function chopText() {
-    parent.textContent = parent.textContent.slice(0, -1);
+    currentNode.textContent = currentNode.textContent.slice(0, -1);
   }
 
   function applyEvent({ data, inputType }) {
