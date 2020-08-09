@@ -9,5 +9,6 @@ click-clack is the [sound](https://www.zapsplat.com/sound-effect-category/typewr
 Features
 --------
 
-+ Configurable timing for each and every keystroke!
-+ Records your typing errors, and also your deleting your typing errors!
+- [x] Configurable timing for each and every keystroke!
+- [x] Records your typing errors, and also your deleting your typing errors!
+- [ ] Includes element nodes in the replay, for CSS and stuff!
