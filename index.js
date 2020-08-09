@@ -1,14 +1,22 @@
-const ClickClackReceiver = (el, callback) => {
+export const Recording = (el, callback) => {
   const eventHistory = [];
   let startTime = null;
 
-  el.addEventListener('input', (evt) => recordEvent(evt, callback));
+  const init = () => {
+    el.addEventListener('input', doRecordEvent);
+  }
 
-  function recordEvent(evt, callback) {
+  const destroy = () => {
+    el.removeEventListener('input', doRecordEvent);
+    startTime = null;
+    eventHistory.length = 0;
+  }
+
+  function doRecordEvent(evt) {
     const { data, inputType } = evt;
 
     eventHistory.push(Object.assign({ data, inputType }, { timestamp: getTimestamp() }));
-    if (typeof callback == 'function') {
+    if (typeof callback === 'function') {
       callback(eventHistory);
     }
   }
@@ -21,6 +29,8 @@ const ClickClackReceiver = (el, callback) => {
 
     return Date.now() - startTime;
   }
+
+  return { init, destroy };
 };
 
 const InputTypes = {
@@ -33,7 +43,7 @@ const InputTypes = {
  * @param {Node} parent - the node we're quote-unquote typing in 
  * @param {Object[]} events - a list of clickclack events 
  */
-const replay = (parent, events) => {
+export default function replay(parent, events) {
   if (!events.length) {
     return;
   }
