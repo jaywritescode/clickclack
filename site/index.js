@@ -13,6 +13,11 @@ document.addEventListener('DOMContentLoaded', () => {
   });
   recorder.init();
 
+  document.querySelector('#typing-area button').addEventListener('click', () => {
+    recorder.destroy();
+    recorder.init();
+  })
+
   document.querySelector('#replay-area button').addEventListener('click', () => {
     const parent = document.querySelector('#replay-area .text-holder');
     const events = JSON.parse(codemirror.getValue());

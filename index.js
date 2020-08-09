@@ -4,12 +4,16 @@ export const Recording = (el, callback) => {
 
   const init = () => {
     el.addEventListener('input', doRecordEvent);
+    callback(eventHistory);
   }
 
   const destroy = () => {
     el.removeEventListener('input', doRecordEvent);
     startTime = null;
     eventHistory.length = 0;
+    if (typeof callback == 'function') {
+      callback(eventHistory);
+    }
   }
 
   function doRecordEvent(evt) {
